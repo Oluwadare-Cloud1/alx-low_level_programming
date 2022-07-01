@@ -11,6 +11,6 @@ int n;
 
 for (n = 48; n <= 57; n++)
 putchar(n);
-putchar(10);
+putchar(10)i; /*this is an ascii code for new line*/
 return (0);
 }
