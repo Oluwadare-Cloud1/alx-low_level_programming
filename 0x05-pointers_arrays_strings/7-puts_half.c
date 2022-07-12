@@ -1,4 +1,5 @@
 #include <string.h>
+#include "main.h"
 
 /**
  *puts_half - print half
