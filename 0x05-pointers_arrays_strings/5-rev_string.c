@@ -1,23 +1,28 @@
 #include "main.h"
 
 /**
- *puts2 - prints one char out of 2
- *@str: type
+ *rev_string - rev string
+ *@s: string
  */
 
-void puts2(char *str)
+void rev_string(char *s)
 {
-int i, j = 0;
+char *t = s;
+char n[1000];
+short c = 0;
 
-while (str[i] != '\0')
+while (*s != '\0')
 {
-i++;
+n[c] = *s;
+s++;
+c++;
 }
+c = 0;
 
-while (j < i)
+while (s > t)
 {
-_putchar(str[j]);
-j = j + 2;
+s--;
+*s = n[c];
+c++;
 }
-_putchar('\n');
 }
