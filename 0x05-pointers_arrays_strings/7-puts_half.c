@@ -3,6 +3,7 @@
 
 /**
  *puts_half - print half
+ *@str -> string
  *Description: prints half of a string
  *Return: Always (0);
  */
