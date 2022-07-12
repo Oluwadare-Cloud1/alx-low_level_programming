@@ -1,40 +1,21 @@
-#include "main.h"
+#include <string.h>
 
 /**
  *puts_half - print half
- *@str: input string
  *Description: prints half of a string
  *Return: Always (0);
  */
 
 void puts_half(char *str)
 {
-int i;
-int diff;
+int x, y, i;
 
-while (str[i] != '\0')
-{
-i++;
-}
-if (i % 2 == 1)
-{
-diff = (i + 1) / 2;
-
-while (str[diff] != '\0')
-{
-_putchar(str[diff]);
-diff++;
-}
-}
+x = strlen(str);
+if (x % 2 == i)
+y = x / 2 + 1;
 else
-{
-diff = (i / 2);
-
-while (str[diff] != '\0')
-{
-_putchar(str[diff]);
-diff++;
-}
-}
+y = x / 2;
+for (i =y; i < x; i++)
+_putchar(str[i]);	
 _putchar('\n');
 }
