@@ -15,4 +15,4 @@ while (*s != '\0')
 s++;
 l++;
 }
-return (l);
+return (0);
