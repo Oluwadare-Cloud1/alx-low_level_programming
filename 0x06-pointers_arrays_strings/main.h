@@ -10,7 +10,6 @@ char *string_toupper(char *);
 char *cap_string(char *);
 char *rot13(char *);
 void print_number(int n);
-void print_number(int n);
 
 
 #endif /* MAIN_H */
