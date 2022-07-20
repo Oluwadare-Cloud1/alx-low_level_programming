@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *is_squre_root - determines the square root of
+ *is_squre_root - main funct
  *@j: an input value
  *@i: input value
  *Description: determines the square root
