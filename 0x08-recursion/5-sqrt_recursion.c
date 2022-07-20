@@ -1,39 +1,29 @@
 #include "main.h"
 
 /**
- *is_squre_root - main funct
- *@j: an input value
- *@i: input value
- *Description: determines the square root
- *Return: returns the input val
+ *check - checks for the square root
+ *@a:int
+ *@b:int
+ *Return: int
  */
-
-int is_square_root(int i, int j)
+int check(int a, int b)
 {
-if (j * j > i)
-{
+if (a * a == b)
+return (a);
+if (a * a > b)
 return (-1);
-}
-if (j * j == i)
-{
-return (j);
-}
-return (is_square_root(i, j + 1));
+return (check(a + 1, b));
 }
 
 /**
- *_sqrt_recursion - returns square root
- *@n: input size
- *Description: If n does not have a natural square root,
- *the function should return -1
- *Return: returns the natural square root of a number
+ *_sqrt_recursion - returns the natural square root of a number
+ *@n: integer to find sqrt of
+ *Return: natural square root or -1
  */
-
 int _sqrt_recursion(int n)
 {
-if (n < 0)
-{
-return (-1);
+if (n == 0)
+return (0);
+return (check(1, n));
 }
-return (is_square_root(n, 1));
-}
+
