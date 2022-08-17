@@ -1,38 +1,52 @@
 #include "lists.h"
-/**
- *free_listint_safe - frees a listint safely
- *@h:pointer to listint
- *Return:size of list free'd
- */
-size_t free_listint_safe(listint_t **h)
-{
-	int p_diff;
-	size_t i = 0;
-	listint_t *temp;
 
-	if (h == NULL || *h == NULL)
+int is_visited2(listint_t *node, listint_t **visited, int count);
+
+/**
+ * free_listint_safe - prints a list even with loop
+ * @head: pointer to head
+ *
+ * Return: number of nodes
+ */
+size_t free_listint_safe(listint_t **head)
+{
+	listint_t *tmp, *visited[1024];
+	int count = 0;
+
+	if (!head)
+		return (-1);
+	while (*head)
 	{
-		return (0);
-	}
-	while (*h)
-	{
-		p_diff = *h - (*h)->next;
-		if (p_diff > 0)
+		if (is_visited2(*head, visited, count))
 		{
-			temp = (*h)->next;
-			free(*h);
-			*h = temp;
-			i++;
-		}
-		else
-		{
-			free(*h);
-			*h = NULL;
-			i++;
+			*head = NULL;
 			break;
 		}
+		visited[count++] = *head;
+		tmp = (*head)->next;
+		free(*head);
+		*head = tmp;
 	}
-	*h = NULL;
-	return (i);
+	return (count);
 }
 
+/**
+ * is_visited2 - check if a node is visited
+ * @node: pointer to node
+ * @visited: list of visited
+ * @count: length of visited
+ *
+ * Return: 1 if is visited and 0 otherwise
+ */
+int is_visited2(listint_t *node, listint_t **visited, int count)
+{
+	int i = 0;
+
+	while (i < count)
+	{
+		if (node == visited[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
