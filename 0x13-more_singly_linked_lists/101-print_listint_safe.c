@@ -1,47 +1,56 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "lists.h"
-
 /**
- * print_listint_safe - prints a list even with loop
- * @head: pointer to head
- *
- * Return: number of nodes
+ *unique_node_count - counts no. of unique nodes
+ *@head:pointer to a head node
+ *Return:number of unique nodes,otherwise 0
  */
-size_t print_listint_safe(const listint_t *head)
+size_t unique_node_count(const listint_t *head)
 {
-	int count = 0;
-	const listint_t *visited[1024];
+listint_t *hare, *tortoise;
+size_t count = 1;
 
-	while (head)
-	{
-		if (is_visited(head, visited, count))
-		{
-			printf("-> [%p] %d\n", (void *)head, head->n);
-			break;
-		}
-		visited[count++] = head;
-		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
-	}
-	return (count);
+if (head == NULL || head->next == NULL)
+{
+return (0);
+}
+hare = head->next->next;
+tortoise = head->next;
+while (hare)
+{
+if (tortoise == hare)
+{
+tortoise = head;
+while (tortoise != hare)
+{
+count++;
+tortoise = tortoise->next;
+hare = hare->next;
+}
+tortoise = tortoise->next;
+while (tortoise != hare)
+{
+count++;
+tortoise = tortoise->next;
 }
 
 /**
- * is_visited - check if a node is visited
- * @node: pointer to node
- * @visited: list of visited
- * @count: length of visited
- *
- * Return: 1 if is visited and 0 otherwise
- */
-int is_visited(const listint_t *node, const listint_t **visited, int count)
+*print_listint_safe - prints a listint list
+*@head:pointer to head
+*Return:number of nodes in list
+*/
+size_t print_listint_safe(const listint_t *head)
 {
-	int i = 0;
+unsigned int i = 0;
 
-	while (i < count)
-	{
-		if (node == visited[i])
-			return (1);
-		i++;
-	}
-	return (0);
+if (head == NULL)
+exit(98);
+while (head)
+{
+printf("[%p] %d", (void *)head, head->n);
+i++;
+head = head->next;
+}
+return (i);
 }
